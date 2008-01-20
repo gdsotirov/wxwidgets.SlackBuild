@@ -1,0 +1,11 @@
+wxwidgets: wxWidgets (A cross-platform GUI toolkit)
+wxwidgets: 
+wxwidgets: wxWidgets is a cross-platform API for writing GUI applications
+wxwidgets: on multiple platforms that still utilize the native platform's
+wxwidgets: controls and utilities. The applications that utilize the
+wxwidgets: libraries adopt they look and feel depending on the platform.
+wxwidgets:
+wxwidgets: Homepage: http://wxwidgets.org
+wxwidgets:
+wxwidgets:
+wxwidgets: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
