@@ -9,7 +9,7 @@
 
 NAME=wxWidgets
 PNAME=`echo $NAME | tr "[:upper:]" "[:lower:]"`
-VERSION=2.8.7
+VERSION=2.8.9
 BUILD=1
 ARCH=${ARCH:-i486}
 
@@ -53,9 +53,10 @@ CXXFLAGS=$SLKCFLAGS \
             --enable-threads \
             --enable-xrc \
             --with-sdl
+#           --with-odbc # doesn't compile
 #           --enable-accessibility # doesn't compile
 
-make || exit 1
+make -j4 || exit 1
 make DESTDIR=$PKG install || exit 2
 
 bin_perms $PKG
@@ -75,7 +76,7 @@ SBDIR=$PKG/usr/src/slackbuilds/$PNAME-$VERSION
 install -m 755 -d $SBDIR
 install -m 644 $CWD/slack-desc       $SBDIR/slack-desc
 install -m 644 $CWD/slack-required   $SBDIR/slack-required
-install -m 644 $CWD/$PNAME.SlackBuild $SBDIR/$PNAME.SlackBuild
+install -m 644 $CWD/$NAME.SlackBuild $SBDIR/$NAME.SlackBuild
 
 PKGNAME=$PNAME-$VERSION-$ARCH-$BUILD$MYIN
 cd $PKG
