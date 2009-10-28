@@ -5,12 +5,12 @@
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
 
-. /etc/slack-package.conf
+. ../slack-package.conf
 
 NAME=wxWidgets
 PNAME=`echo $NAME | tr "[:upper:]" "[:lower:]"`
 VERSION=2.8.10
-BUILD=1
+BUILD=2
 ARCH=${ARCH:-i486}
 
 CWD=${CWD:-`pwd`}
@@ -80,9 +80,9 @@ install -m 644 $CWD/$PNAME.SlackBuild $SBDIR/$PNAME.SlackBuild
 
 PKGNAME=$PNAME-$VERSION-$ARCH-$BUILD$MYIN
 cd $PKG
-makepkg -l y -c n $PKG_DIR/$PKGNAME.tgz
+makepkg -l y -c n $PKG_DIR/$PKGNAME.txz
 cd $PKG_DIR
-md5sum $PKGNAME.tgz > $PKGNAME.tgz.md5
+md5sum $PKGNAME.txz > $PKGNAME.txz.md5
 cp $CWD/slack-desc $PKGNAME.txt
 
 # Clean up (optionally)
