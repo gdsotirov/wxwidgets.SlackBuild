@@ -1,15 +1,32 @@
 #!/bin/sh
 #
 # Slackware build script for wxWidgets (GTK)
-# Written by Georgi D. Sotirov <gdsotirov@dir.bg>
+# Copyright (C) 2008-2010,2012 Georgi D. Sotirov <gdsotirov@dir.bg>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
+# $Id: wxwidgets.SlackBuild,v 1.7 2012/10/06 16:34:05 gsotirov Exp $
+#
 
-. ../slack-package.conf
+. ../../slack-package.conf
 
 NAME=wxWidgets
 PNAME=`echo $NAME | tr "[:upper:]" "[:lower:]"`
-VERSION=2.9.1
+VERSION=2.9.4
 BUILD=${BUILD:-1}
 ARCH=${ARCH:-i486}
 
@@ -35,7 +52,7 @@ mkdir -p $PKG
 
 # Extract the sources
 cd $TMP
-tar -xvf $CWD/$NAME-$VERSION.tar.bz2 || exit 1
+tar -xvf $CWD/$NAME-$VERSION.tar.?z* || exit 3
 cd $SRC
 fix_source
 
@@ -46,6 +63,7 @@ CXXFLAGS=$SLKCFLAGS \
 ./configure --build=$ARCH-slackware-linux \
             --host=$ARCH-slackware-linux \
             --prefix=/usr \
+            --libdir=/usr/lib${LIBDIRSUFFIX} \
             --sysconfdir=/etc \
             --localstatedir=/var \
             --enable-gui \
@@ -84,13 +102,13 @@ CXXFLAGS=$SLKCFLAGS \
             --with-sdl \
             --with-regex \
             --with-zlib \
-            --with-expat || exit 2
+            --with-expat || exit 4
 # Doesn't compile - wxUSE_ACCESSIBILITY is currently only supported under wxMSW
 #           --enable-accessibility \
 
 # Build & install
-make -j2 || exit 3
-make DESTDIR=$PKG install || exit 4
+make -j4 || exit 5
+make DESTDIR=$PKG install || exit 6
 
 # Prepare
 bin_perms $PKG
@@ -111,6 +129,7 @@ install -m 644 $CWD/slack-desc        $SBDIR/slack-desc
 install -m 644 $CWD/slack-required    $SBDIR/slack-required
 install -m 644 $CWD/$PNAME.SlackBuild $SBDIR/$PNAME.SlackBuild
 
+# Assemble
 PKGNAME=$PNAME-$VERSION-$ARCH-$BUILD$MYIN
 cd $PKG
 makepkg -l y -c n $PKG_DIR/$PKGNAME.txz
