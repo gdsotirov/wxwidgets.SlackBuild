@@ -19,7 +19,7 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: wxwidgets.SlackBuild,v 1.9 2017/04/22 13:33:54 gsotirov Exp $
+# $Id: wxwidgets.SlackBuild,v 1.10 2017/04/22 20:31:44 gsotirov Exp $
 #
 
 . ../../slack-package.conf
@@ -27,7 +27,7 @@
 NAME=wxWidgets
 PNAME=`echo $NAME | tr "[:upper:]" "[:lower:]"`
 VERSION=2.8.12
-ARCH=${ARCH:-i486}
+ARCH=${ARCH:-i586}
 BUILD=${BUILD:-1}
 
 CWD=${CWD:-`pwd`}
