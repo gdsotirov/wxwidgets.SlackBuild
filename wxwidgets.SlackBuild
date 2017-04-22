@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Slackware build script for wxWidgets (GTK)
-# Copyright (C) 2008-2010,2012 Georgi D. Sotirov <gdsotirov@dir.bg>
+# Copyright (C) 2008-2012 Georgi D. Sotirov <gdsotirov@dir.bg>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,16 +19,16 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: wxwidgets.SlackBuild,v 1.7 2012/10/06 16:34:05 gsotirov Exp $
+# $Id: wxwidgets.SlackBuild,v 1.8 2017/04/22 10:58:27 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=wxWidgets
 PNAME=`echo $NAME | tr "[:upper:]" "[:lower:]"`
-VERSION=2.9.4
-BUILD=${BUILD:-1}
+VERSION=2.8.12
 ARCH=${ARCH:-i486}
+BUILD=${BUILD:-1}
 
 CWD=${CWD:-`pwd`}
 TMP=${TMP:-/tmp}
@@ -58,8 +58,8 @@ fix_source
 
 # Configure with most complete and generic options. Do not control what
 # classes are included in the library
-CFLAGS=$SLKCFLAGS \
-CXXFLAGS=$SLKCFLAGS \
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
 ./configure --build=$ARCH-slackware-linux \
             --host=$ARCH-slackware-linux \
             --prefix=/usr \
