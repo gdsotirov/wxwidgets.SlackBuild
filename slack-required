@@ -28,6 +28,7 @@ libXxf86vm >= 1.1.2
 libdrm >= 2.4.33
 libffi >= 3.0.11
 libjpeg >= v8a
+libmspack >= 0.4alpha
 libpng >= 1.4.12
 libtiff >= 3.9.6
 libxcb >= 1.8.1
