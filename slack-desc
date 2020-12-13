@@ -5,7 +5,7 @@ wxwidgets: on multiple platforms that still utilize the native platform's
 wxwidgets: controls and utilities. The applications that utilize the
 wxwidgets: libraries adopt they look and feel depending on the platform.
 wxwidgets:
-wxwidgets: Homepage: http://wxwidgets.org
+wxwidgets: Homepage: https://wxwidgets.org
 wxwidgets:
 wxwidgets:
 wxwidgets: Packaged by Georgi D. Sotirov <gdsotirov@gmail.com>
